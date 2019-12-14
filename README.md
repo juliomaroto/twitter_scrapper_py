@@ -23,6 +23,9 @@ $ pip3 install -r requirements.txt
 ```
 ### Dependencies
 
+**You need to have installed PostgreSQL as far as currently there is 
+only support for this database.**
+
     selenium==3.141.0
     pandas==0.25.3
     psycopg2-binary==2.8.4
@@ -32,8 +35,29 @@ $ pip3 install -r requirements.txt
 ### Configuration
 
 Configure a PostgreSQL origin and configure the scheduling within the 
-two available scrappers. Historical is for retrieving historical data and
+two available scrappers. Please, refer to: <https://hub.docker.com/_/postgres>
+
+Example:
+```
+$ docker run --name some-postgres -p 3306:3306 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+```
+
+Execute the following DDL statement to create the tweets insertion table.
+```
+create table twitter.tweets(
+	id serial,
+	tweet_id bigint not null,
+	username varchar(15) not null,
+	tweet varchar(280) not null,
+	primary key(id)
+);
+
+CREATE UNIQUE INDEX tw_id ON twitter.tweets (tweet_id);
+```
+
+Historical is for retrieving historical data and
 recent is for waiting for last available news.
+
 ```
 database:
     host: localhost
