@@ -48,7 +48,7 @@ create table twitter.tweets(
 	id serial,
 	tweet_id bigint not null,
 	username varchar(15) not null,
-	tweet varchar(280) not null,
+	tweet text not null,
 	primary key(id)
 );
 
