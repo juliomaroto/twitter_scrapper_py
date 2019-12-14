@@ -10,7 +10,7 @@ Please, use it honestly.
 
 ## About
 
-This project files and implementation of twitter scrapper anonymous service
+This project files an implementation of twitter scrapper anonymous service
 using selenium as browser engine. This project works by default on MacOS
 using GECKO driver (Firefox).
 
